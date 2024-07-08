@@ -104,7 +104,7 @@ const Welcome = () => {
             >
               DYNAMIC TABLES
             </em>
-            <img src={table} />
+            <img alt="table" src={table} />
           </div>
           <br></br>
         </div>

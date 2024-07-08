@@ -1,0 +1,30 @@
+import React from "react";
+import { render, screen } from "@testing-library/react";
+ort "@testing-library/jest-dom";
+
+ort NavBar from '../../components/NavBar';
+
+t('renders NavBar buttons', () => {
+
+
+
+
+
+
+test("renders Welcome to Nemo!", () => {
+    render(<Welcome />);
+    const linkElement = screen.getByText("Welcome to Nemo!");
+    expect(linkElement).toBeInTheDocument();
+  });
+  
+  test("renders What Is Nemo?", () => {
+    render(<Welcome />);
+    const linkElement2 = screen.getByText("What Is Nemo?");
+    expect(linkElement2).toBeInTheDocument();
+  });
+  
+  test("renders an image", () => {
+    const { getByAltText } = render(<Welcome />);
+    const imgElement = getByAltText(/table/i);
+    expect(imgElement).toBeInTheDocument();
+  });
