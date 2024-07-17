@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
-import NodeContainer from './NodeContainer.jsx';
-import PodContainer from './PodContainer.jsx';
-import ChartComponent from './ClusterStructure.jsx';
-import Welcome from './Welcome.jsx';
+import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+import NodeContainer from "./NodeContainer.jsx";
+import PodContainer from "./PodContainer.jsx";
+import ChartComponent from "./ClusterStructure.jsx";
+import Welcome from "./Welcome.jsx";
 
 const fetchNodes = async () => {
   //update fetch endpoint to be flexible via env variables
-  const response = await fetch('http://localhost:3000/metricserver/topNodes');
+  const response = await fetch(`http://${TO_BE_ADDED}/metricserver/topNodes`);
   if (!response.ok) {
-    throw new Error('Response from server not ok.');
+    throw new Error("Response from server not ok.");
   }
   return response.json();
 };
 
 const fetchPods = async () => {
   //update fetch endpoint to be flexible via env variables
-  const response = await fetch('http://localhost:3000/metricserver/topPods');
+  const response = await fetch(`http://${TO_BE_ADDED}/metricserver/topPods`);
   if (!response.ok) {
-    throw new Error('Response from server not ok.');
+    throw new Error("Response from server not ok.");
   }
   return response.json();
 };
@@ -29,7 +29,7 @@ const MainContainer = ({ activeButton }) => {
     isLoading: isLoadingNodes,
     isError: isNodesError,
     error: nodesError,
-  } = useQuery('nodes', fetchNodes, {
+  } = useQuery("nodes", fetchNodes, {
     refetchInterval: 2000,
   });
 
@@ -38,7 +38,7 @@ const MainContainer = ({ activeButton }) => {
     isLoading: isLoadingPods,
     isError: isPodsError,
     error: podsError,
-  } = useQuery('pods', fetchPods, {
+  } = useQuery("pods", fetchPods, {
     refetchInterval: 2000,
   });
 
@@ -53,8 +53,8 @@ const MainContainer = ({ activeButton }) => {
     (activeButton === 3 && isLoadingNodes) ||
     (activeButton === 4 && isLoadingPods);
 
-  if (isNodesError) console.error('Error fetching nodes:', nodesError);
-  if (isPodsError) console.error('Error fetching pods:', podsError);
+  if (isNodesError) console.error("Error fetching nodes:", nodesError);
+  if (isPodsError) console.error("Error fetching pods:", podsError);
 
   return (
     <div>
