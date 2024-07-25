@@ -7,7 +7,9 @@ import Welcome from "./Welcome.jsx";
 
 const fetchNodes = async () => {
   //update fetch endpoint to be flexible via env variables
-  const response = await fetch(`http://${TO_BE_ADDED}/metricserver/topNodes`);
+  const response = await fetch(
+    `http://${INSERT_KUBE_ADDRESS}/metricserver/topNodes`,
+  );
   if (!response.ok) {
     throw new Error("Response from server not ok.");
   }
@@ -16,7 +18,9 @@ const fetchNodes = async () => {
 
 const fetchPods = async () => {
   //update fetch endpoint to be flexible via env variables
-  const response = await fetch(`http://${TO_BE_ADDED}/metricserver/topPods`);
+  const response = await fetch(
+    `http://${INSERT_KUBE_ADDRESS}/metricserver/topPods`,
+  );
   if (!response.ok) {
     throw new Error("Response from server not ok.");
   }
