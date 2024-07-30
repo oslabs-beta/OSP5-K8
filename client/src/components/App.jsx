@@ -27,7 +27,7 @@ const App = () => {
           activeButton={activeButton}
           ip={ip}
         />
-        <MainContainer activeButton={activeButton} ip={ip} />
+        <MainContainer activeButton={activeButton} ip={ip} setIP={setIP} />
       </QueryClientProvider>
     </div>
   );
