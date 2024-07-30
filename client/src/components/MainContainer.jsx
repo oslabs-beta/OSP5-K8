@@ -5,35 +5,34 @@ import PodContainer from "./PodContainer.jsx";
 import ChartComponent from "./ClusterStructure.jsx";
 import Welcome from "./Welcome.jsx";
 
-const fetchNodes = async () => {
-  //update fetch endpoint to be flexible via env variables
-  const response = await fetch(
-    `http://${INSERT_KUBE_ADDRESS}/metricserver/topNodes`,
-  );
-  if (!response.ok) {
-    throw new Error("Response from server not ok.");
+const fetchNodes = async (ip) => {
+  while (ip) {
+    const response = await fetch(`http://${ip}/metricserver/topNodes`);
+    console.log(response);
+    if (!response.ok) {
+      throw new Error("Response from server not ok.");
+    }
+    return response.json();
   }
-  return response.json();
 };
 
-const fetchPods = async () => {
-  //update fetch endpoint to be flexible via env variables
-  const response = await fetch(
-    `http://${INSERT_KUBE_ADDRESS}/metricserver/topPods`,
-  );
-  if (!response.ok) {
-    throw new Error("Response from server not ok.");
+const fetchPods = async (ip) => {
+  while (ip) {
+    const response = await fetch(`http://${ip}/metricserver/topPods`);
+    if (!response.ok) {
+      throw new Error("Response from server not ok.");
+    }
+    return response.json();
   }
-  return response.json();
 };
 
-const MainContainer = ({ activeButton }) => {
+const MainContainer = ({ activeButton, ip }) => {
   const {
     data: nodes,
     isLoading: isLoadingNodes,
     isError: isNodesError,
     error: nodesError,
-  } = useQuery("nodes", fetchNodes, {
+  } = useQuery(["nodes", ip], () => fetchNodes(ip), {
     refetchInterval: 2000,
   });
 
@@ -42,7 +41,7 @@ const MainContainer = ({ activeButton }) => {
     isLoading: isLoadingPods,
     isError: isPodsError,
     error: podsError,
-  } = useQuery("pods", fetchPods, {
+  } = useQuery(["pods", ip], () => fetchPods(ip), {
     refetchInterval: 2000,
   });
 
@@ -62,17 +61,23 @@ const MainContainer = ({ activeButton }) => {
 
   return (
     <div>
-      {showLoadingSpinner ? (
-        <Spinner />
+      {!ip ? (
+        <Welcome />
       ) : (
-        <div>
-          {activeButton === 1 && <Welcome />}
-          {activeButton === 2 && (
-            <ChartComponent nodeData={nodes} podsData={podsData} />
+        <>
+          {showLoadingSpinner ? (
+            <Spinner />
+          ) : (
+            <div>
+              {activeButton === 1 && <Welcome />}
+              {activeButton === 2 && (
+                <ChartComponent nodeData={nodes} podsData={podsData} />
+              )}
+              {activeButton === 3 && <NodeContainer nodeData={nodes} />}
+              {activeButton === 4 && <PodContainer podsData={podsData} />}
+            </div>
           )}
-          {activeButton === 3 && <NodeContainer nodeData={nodes} />}
-          {activeButton === 4 && <PodContainer podsData={podsData} />}
-        </div>
+        </>
       )}
     </div>
   );

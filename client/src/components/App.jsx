@@ -7,7 +7,12 @@ import Header from "./Header.jsx";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const [activeButton, setActiveButton] = useState(1);
+  const [activeButton, setActiveButton] = useState(2);
+  const [ip, setIP] = useState("");
+
+  const changeIP = (ipString) => {
+    setIP(ipString);
+  };
 
   useEffect(() => {
     document.body.style.margin = "0";
@@ -16,9 +21,13 @@ const App = () => {
   return (
     <div style={{ backgroundColor: "#081020", minHeight: "100vh" }}>
       <QueryClientProvider client={queryClient}>
-        <Header />
-        <Navbar setActiveButton={setActiveButton} />
-        <MainContainer activeButton={activeButton} />
+        <Header callback={changeIP} />
+        <Navbar
+          setActiveButton={setActiveButton}
+          activeButton={activeButton}
+          ip={ip}
+        />
+        <MainContainer activeButton={activeButton} ip={ip} />
       </QueryClientProvider>
     </div>
   );
