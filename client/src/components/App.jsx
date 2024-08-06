@@ -9,16 +9,11 @@ const queryClient = new QueryClient();
 const App = () => {
   const [activeButton, setActiveButton] = useState(2);
   const [ip, setIP] = useState("");
-  // const [binary, setBinary] = useState(0);
 
   const changeIP = (ipString) => {
     setIP(ipString);
   };
 
-  // the sole purpose of this function is to cause a rerender if the switch is flipped
-  // const flipSwitch = ()=>{
-  //   binary === 0 ? setBinary(1) : setBinary(0)
-  // }
 
   useEffect(() => {
     document.body.style.margin = "0";

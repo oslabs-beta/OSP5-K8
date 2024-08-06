@@ -21,19 +21,24 @@ const Header = (props) => {
   };
 
   return (
-    <div className="p-2 text-right text-white">
+    <div className="font-roboto ml-64 flex items-center justify-end p-2 text-nemo-blue-200">
       <form id="ipform" onSubmit={handleSubmit}>
         <label>
-          IP:
           <input
             type="text"
             onChange={changeNow}
-            className="text-black"
+            placeholder="888.888.888.888"
+            className="m-1 w-36 bg-nemo-orange-100 pl-3 text-nemo-blue-800"
           ></input>
         </label>
       </form>
-      <button type="submit" form="ipform" value="Submit">
-        Submit
+      <button
+        className="ml-2 flex overflow-hidden rounded-xl border-2 border-nemo-blue-200 bg-nemo-blue-800 p-2"
+        type="submit"
+        form="ipform"
+        value="Submit"
+      >
+        IP Submit
       </button>
     </div>
   );

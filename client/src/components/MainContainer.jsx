@@ -100,7 +100,7 @@ const MainContainer = ({ activeButton, ip }) => {
             <div>
               {activeButton === 1 && <Welcome />}
               {activeButton === 2 && (
-                <ChartComponent nodeData={nodes} podsData={podsData} />
+                <ChartComponent nodeData={nodes} podsData={podsData} ip={ip} />
               )}
               {activeButton === 3 && <NodeContainer nodeData={nodes} />}
               {activeButton === 4 && <PodContainer podsData={podsData} />}
