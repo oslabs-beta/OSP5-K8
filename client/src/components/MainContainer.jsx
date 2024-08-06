@@ -5,28 +5,57 @@ import PodContainer from "./PodContainer.jsx";
 import ChartComponent from "./ClusterStructure.jsx";
 import Welcome from "./Welcome.jsx";
 
-const fetchNodes = async (ip) => {
-  while (ip) {
-    const response = await fetch(`http://${ip}/metricserver/topNodes`);
-    console.log(response);
-    // if (!response.ok) {
-    //   throw new Error("Response from server not ok.");
-    // }
-    return response.json();
-  }
-};
+const MainContainer = ({ activeButton, ip }) => {
+  // const fetchNodes = async () => {
+  //   while (ip) {
+  //     const response = await fetch(`http://${ip}/metricserver/topNodes`);
+  //     console.log(response);
+  //     // if (!response.ok) {
+  //     //   throw new Error("Response from server not ok.");
+  //     // }
+  //     return response.json();
+  //   }
+  // };
 
-const fetchPods = async (ip) => {
-  while (ip) {
-    const response = await fetch(`http://${ip}/metricserver/topPods`);
-    // if (!response.ok) {
-    //   throw new Error("Response from server not ok.");
-    // }
-    return response.json();
-  }
-};
+  // const fetchPods = async () => {
+  //   while (ip) {
+  //     const response = await fetch(`http://${ip}/metricserver/topPods`);
+  //     // if (!response.ok) {
+  //     //   throw new Error("Response from server not ok.");
+  //     // }
+  //     return response.json();
+  //   }
+  // };
 
-const MainContainer = ({ activeButton, ip, setIP }) => {
+  const fetchNodes = async () => {
+    try {
+      if (ip) {
+        const response = await fetch(`http://${ip}/metricserver/topNodes`);
+        console.log(response);
+        if (!response.ok) {
+          throw new Error("Response from server not ok.");
+        }
+        return response.json();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchPods = async () => {
+    try {
+      if (ip) {
+        const response = await fetch(`http://${ip}/metricserver/topPods`);
+        if (!response.ok) {
+          throw new Error("Response from server not ok.");
+        }
+        return response.json();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const {
     data: nodes,
     isLoading: isLoadingNodes,
@@ -58,13 +87,6 @@ const MainContainer = ({ activeButton, ip, setIP }) => {
 
   // if (isNodesError) console.error("Error fetching nodes:", nodesError);
   // if (isPodsError) console.error("Error fetching pods:", podsError);
-
-  if (isNodesError) {
-    console.error("Error fetching nodes:", nodesError);
-    // alert("Please enter a valid IP address. Returning to Welcome screen...");
-    return <Welcome />;
-  }
-  if (isPodsError) console.error("Error fetching pods:", podsError);
 
   return (
     <div>

@@ -5,15 +5,19 @@ const Header = (props) => {
   const [input, setInput] = useState("");
 
   const changeNow = (event) => {
-    // event.preventDefault();
-    // console.log(event.target.value);
-    // callback(event.target.value);
     setInput(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    callback(input);
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      const response = await fetch(`http://${input}/metricserver/topNodes`);
+      callback(input);
+    } catch (err) {
+      alert(
+        `${input} is not a valid IP address. Please enter a valid IP address.`,
+      );
+    }
   };
 
   return (
