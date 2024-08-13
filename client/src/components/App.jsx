@@ -8,7 +8,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [activeButton, setActiveButton] = useState(2);
-  const [ip, setIP] = useState("34.44.251.182");
+  const [ip, setIP] = useState("");
 
   const changeIP = (ipString) => {
     setIP(ipString);
