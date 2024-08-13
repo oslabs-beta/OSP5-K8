@@ -8,27 +8,41 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [activeButton, setActiveButton] = useState(2);
-  const [ip, setIP] = useState("");
+  const [ip, setIP] = useState("34.44.251.182");
 
   const changeIP = (ipString) => {
     setIP(ipString);
   };
-
 
   useEffect(() => {
     document.body.style.margin = "0";
   }, []);
 
   return (
-    <div style={{ backgroundColor: "#081020", minHeight: "100vh" }}>
+    <div className="min-h-screen bg-nemo-blue-950">
       <QueryClientProvider client={queryClient}>
+        {/* <div>
         <Header callback={changeIP} />
+        </div>
+        <div className="flex">
         <Navbar
           setActiveButton={setActiveButton}
           activeButton={activeButton}
           ip={ip}
         />
         <MainContainer activeButton={activeButton} ip={ip} />
+        </div> */}
+        <Navbar
+          setActiveButton={setActiveButton}
+          activeButton={activeButton}
+          ip={ip}
+        />
+
+        <div className="flex flex-col border-2 border-yellow-500">
+          <Header callback={changeIP} />
+
+          <MainContainer activeButton={activeButton} ip={ip} />
+        </div>
       </QueryClientProvider>
     </div>
   );

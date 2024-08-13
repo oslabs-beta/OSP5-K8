@@ -11,7 +11,7 @@ const Navbar = ({ setActiveButton, activeButton, ip }) => {
 
   return (
     <div className="flex">
-      <div className="fixed left-0 top-0 flex h-screen w-64 flex-col bg-nemo-blue-900 pt-5">
+      <div className="fixed left-0 top-0 flex h-full flex-col border-2 border-red-500 bg-nemo-blue-900 pt-5 sm:w-1/6 lg:w-64">
         {ip &&
           buttonLabels.map((label, i) => (
             <button
