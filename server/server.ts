@@ -55,6 +55,8 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 /**
  * start the server
  */
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 export default app;

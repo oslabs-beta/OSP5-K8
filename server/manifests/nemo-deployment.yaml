@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nemo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nemo-app
+  template:
+    metadata:
+      labels:
+        app: nemo-app
+    spec:
+      containers:
+        - name: nemo-container
+          image: callummiles/nemo-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000

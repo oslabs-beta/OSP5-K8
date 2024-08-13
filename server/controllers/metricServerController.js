@@ -36,9 +36,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import * as k8s from '@kubernetes/client-node';
 // import type { RequestHandler } from 'express';
+console.log('msc loaded');
 var kc = new k8s.KubeConfig();
-kc.loadFromDefault();
+kc.loadFromCluster();
 var k8sApi = kc.makeApiClient(k8s.CoreV1Api);
+console.log(kc);
 // const metricServerController = {};
 var metricsClient = new k8s.Metrics(kc);
 export default {
@@ -60,10 +62,10 @@ export default {
                     topPods = data.map(function (pod) {
                         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l;
                         return {
-                            NODE_NAME: (_b = (_a = pod.Pod.spec) === null || _a === void 0 ? void 0 : _a.nodeName) !== null && _b !== void 0 ? _b : "defaultNodeName",
-                            POD_NAME: (_d = (_c = pod.Pod.metadata) === null || _c === void 0 ? void 0 : _c.name) !== null && _d !== void 0 ? _d : "defaultPodName",
-                            UID: (_f = (_e = pod.Pod.metadata) === null || _e === void 0 ? void 0 : _e.uid) !== null && _f !== void 0 ? _f : "defaultUIDName",
-                            CREATED_AT: (_h = (_g = pod.Pod.metadata) === null || _g === void 0 ? void 0 : _g.creationTimestamp) !== null && _h !== void 0 ? _h : "defaultTimeStamp",
+                            NODE_NAME: (_b = (_a = pod.Pod.spec) === null || _a === void 0 ? void 0 : _a.nodeName) !== null && _b !== void 0 ? _b : 'defaultNodeName',
+                            POD_NAME: (_d = (_c = pod.Pod.metadata) === null || _c === void 0 ? void 0 : _c.name) !== null && _d !== void 0 ? _d : 'defaultPodName',
+                            UID: (_f = (_e = pod.Pod.metadata) === null || _e === void 0 ? void 0 : _e.uid) !== null && _f !== void 0 ? _f : 'defaultUIDName',
+                            CREATED_AT: (_h = (_g = pod.Pod.metadata) === null || _g === void 0 ? void 0 : _g.creationTimestamp) !== null && _h !== void 0 ? _h : 'defaultTimeStamp',
                             CPU_USAGE_CORES: (_j = pod.CPU.CurrentUsage) !== null && _j !== void 0 ? _j : 0,
                             // previously, had passed pod.CPU.CurrentUsage to parseFloat method
                             CPU_PERCENTAGE: ((Number(pod.CPU.CurrentUsage) / totalUsage_1.totalCpu) *
@@ -71,11 +73,10 @@ export default {
                             // number is provided as bigInt by api
                             MEMORY_USAGE_BYTES: Number(pod.Memory.CurrentUsage),
                             // previously, had passed pod.CPU.CurrentUsage to parseFloat method
-                            MEMORY_PERCENTAGE: ((Number(pod.Memory.CurrentUsage) /
-                                totalUsage_1.totalMemory) *
+                            MEMORY_PERCENTAGE: ((Number(pod.Memory.CurrentUsage) / totalUsage_1.totalMemory) *
                                 100).toFixed(3),
                             CONTAINER_COUNT: pod.Containers.length,
-                            CONDITIONS: (_l = (_k = pod.Pod.status) === null || _k === void 0 ? void 0 : _k.conditions) !== null && _l !== void 0 ? _l : "defaultCondition",
+                            CONDITIONS: (_l = (_k = pod.Pod.status) === null || _k === void 0 ? void 0 : _k.conditions) !== null && _l !== void 0 ? _l : 'defaultCondition',
                         };
                     });
                     res.locals.topPods = topPods;
@@ -105,14 +106,14 @@ export default {
                     topNodes = data.map(function (node) {
                         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r;
                         return {
-                            NODE_NAME: (_b = (_a = node.Node.metadata) === null || _a === void 0 ? void 0 : _a.name) !== null && _b !== void 0 ? _b : "defaultNodeName",
-                            UID: (_d = (_c = node.Node.metadata) === null || _c === void 0 ? void 0 : _c.uid) !== null && _d !== void 0 ? _d : "defaultUID",
-                            CREATED_AT: (_f = (_e = node.Node.metadata) === null || _e === void 0 ? void 0 : _e.creationTimestamp) !== null && _f !== void 0 ? _f : "defaultTimeStamp",
-                            IP_ADDRESSES: (_h = (_g = node.Node.status) === null || _g === void 0 ? void 0 : _g.addresses) !== null && _h !== void 0 ? _h : "defaultIPAddress",
-                            RESOURCE_CAPACITY: (_k = (_j = node.Node.status) === null || _j === void 0 ? void 0 : _j.capacity) !== null && _k !== void 0 ? _k : "defaultCapacity",
-                            ALLOCATABLE_RESOURCES: (_m = (_l = node.Node.status) === null || _l === void 0 ? void 0 : _l.allocatable) !== null && _m !== void 0 ? _m : "defaultAllocatable",
-                            NODE_INFO: (_p = (_o = node.Node.status) === null || _o === void 0 ? void 0 : _o.nodeInfo) !== null && _p !== void 0 ? _p : "defaultNodeInfo",
-                            CONDITIONS: (_r = (_q = node.Node.status) === null || _q === void 0 ? void 0 : _q.conditions) !== null && _r !== void 0 ? _r : "defaultConditions",
+                            NODE_NAME: (_b = (_a = node.Node.metadata) === null || _a === void 0 ? void 0 : _a.name) !== null && _b !== void 0 ? _b : 'defaultNodeName',
+                            UID: (_d = (_c = node.Node.metadata) === null || _c === void 0 ? void 0 : _c.uid) !== null && _d !== void 0 ? _d : 'defaultUID',
+                            CREATED_AT: (_f = (_e = node.Node.metadata) === null || _e === void 0 ? void 0 : _e.creationTimestamp) !== null && _f !== void 0 ? _f : 'defaultTimeStamp',
+                            IP_ADDRESSES: (_h = (_g = node.Node.status) === null || _g === void 0 ? void 0 : _g.addresses) !== null && _h !== void 0 ? _h : 'defaultIPAddress',
+                            RESOURCE_CAPACITY: (_k = (_j = node.Node.status) === null || _j === void 0 ? void 0 : _j.capacity) !== null && _k !== void 0 ? _k : 'defaultCapacity',
+                            ALLOCATABLE_RESOURCES: (_m = (_l = node.Node.status) === null || _l === void 0 ? void 0 : _l.allocatable) !== null && _m !== void 0 ? _m : 'defaultAllocatable',
+                            NODE_INFO: (_p = (_o = node.Node.status) === null || _o === void 0 ? void 0 : _o.nodeInfo) !== null && _p !== void 0 ? _p : 'defaultNodeInfo',
+                            CONDITIONS: (_r = (_q = node.Node.status) === null || _q === void 0 ? void 0 : _q.conditions) !== null && _r !== void 0 ? _r : 'defaultConditions',
                             CPU_CAPACITY: node.CPU.Capacity,
                             CPU_REQUEST_TOTAL: node.CPU.RequestTotal,
                             CPU_LIMIT_TOTAL: node.CPU.LimitTotal,
@@ -135,6 +136,6 @@ export default {
                 case 3: return [2 /*return*/];
             }
         });
-    }); }
+    }); },
 };
 // export default metricServerController;
