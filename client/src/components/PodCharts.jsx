@@ -94,14 +94,18 @@ const PodCharts = ({ memUsages, cpuUsages, memPodNames, cpuPodNames }) => {
   };
 
   return (
-    <div className="font-roboto flex w-screen flex-wrap justify-around p-5 text-2xl font-bold">
-      <div className="w-96 text-nemo-blue-200">
-        <h3 className="flex justify-center p-5">Pod Memory Usage</h3>
-        <Doughnut data={memData} options={memOptions} />
+    <div className="font-roboto flex w-full flex-wrap justify-around border-2 border-green-500 p-5 text-xl font-bold text-nemo-blue-200">
+      <div className="flex h-auto w-5/6 flex-col border-2 border-red-500 lg:w-1/3">
+        <h3 className="flex justify-center p-5 text-center">POD MEMORY</h3>
+        <div className="flex w-full justify-center border-2 border-yellow-500">
+          <Doughnut data={memData} options={memOptions} />
+        </div>
       </div>
-      <div className="w-96 text-nemo-blue-200">
-        <h3 className="flex justify-center p-5">Pod CPU Usage</h3>
-        <Doughnut data={cpuData} options={cpuOptions} />
+      <div className="flex h-auto w-5/6 flex-col border-2 border-red-500 lg:w-1/3">
+        <h3 className="flex justify-center p-5 text-center">POD CPU</h3>
+        <div className="flex w-full justify-center border-2 border-yellow-500">
+          <Doughnut data={cpuData} options={cpuOptions} />
+        </div>
       </div>
     </div>
   );

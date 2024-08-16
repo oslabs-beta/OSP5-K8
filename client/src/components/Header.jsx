@@ -21,7 +21,7 @@ const Header = (props) => {
   };
 
   return (
-    <div className="font-roboto ml-64 flex items-center justify-end p-2 text-nemo-blue-200">
+    <div className="font-roboto flex items-center justify-end p-2 text-nemo-blue-200">
       <form id="ipform" onSubmit={handleSubmit}>
         <label>
           <input

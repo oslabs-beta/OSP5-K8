@@ -26,7 +26,7 @@ const PodContainer = ({ podsData }) => {
   });
 
   return (
-    <div className="ml-64">
+    <div>
       <div className="font-roboto flex flex-wrap items-start justify-around p-5">
         <PodCharts
           memUsages={memUsageArray}

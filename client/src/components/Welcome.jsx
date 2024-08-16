@@ -25,7 +25,7 @@ const Welcome = () => {
           alignItems: "center", // Vertical centering
           opacity: showText ? 1 : 0, // Set opacity based on showText state
           transition: "opacity 4s ease", // Smooth transition for opacity change
-          marginLeft: "150px", // Set left margin to auto to push text to the right
+          // marginLeft: "150px", // Set left margin to auto to push text to the right
         }}
       >
         <h1
@@ -43,7 +43,7 @@ const Welcome = () => {
           alignItems: "center", // Vertical centering
           opacity: showText1 ? 1 : 0, // Set opacity based on showText state
           transition: "opacity 10s ease", // Smooth transition for opacity change
-          marginLeft: "150px", // Set left margin to auto to push text to the right
+          // marginLeft: "150px", // Set left margin to auto to push text to the right
         }}
       >
         <div
@@ -51,7 +51,7 @@ const Welcome = () => {
             display: "flex",
             maxWidth: "75%",
             overflow: "wrap",
-            marginLeft: "110px",
+            // marginLeft: "110px",
           }}
         >
           <h1 style={{ fontSize: "48px" }}>
@@ -89,7 +89,7 @@ const Welcome = () => {
         <div
           style={{
             fontSize: "40px",
-            marginLeft: "110px",
+            // marginLeft: "110px",
             display: "flex",
             flexDirection: "column",
           }}
@@ -99,7 +99,7 @@ const Welcome = () => {
               style={{
                 marginBottom: ".5em",
                 fontSize: "40px",
-                marginLeft: "110px",
+                // marginLeft: "110px",
               }}
             >
               DYNAMIC TABLES
@@ -112,7 +112,6 @@ const Welcome = () => {
       <br></br>
       <br></br>
       <div
-        className="ml-64"
         style={{
           marginBottom: ".5em",
           fontSize: "40px",
@@ -126,7 +125,6 @@ const Welcome = () => {
       </div>
 
       <div
-        className="ml-64"
         style={{
           display: "flex",
           justifyContent: "space-around",

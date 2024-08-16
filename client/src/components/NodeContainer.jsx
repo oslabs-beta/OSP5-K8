@@ -26,7 +26,7 @@ const NodeContainer = ({ nodeData }) => {
   });
 
   return (
-    <div className="ml-64">
+    <div>
       <div className="font-roboto flex flex-wrap items-start justify-around p-5">
         <NodeCharts
           memUsages={memUsageArray}

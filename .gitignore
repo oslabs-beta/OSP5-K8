@@ -9,3 +9,7 @@ dist/
 
 # Ignore ds store
 **/.DS_Store
+
+# Ignore development credentials
+myDotEnv.js
+

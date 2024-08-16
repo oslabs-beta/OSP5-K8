@@ -75,7 +75,7 @@ const MainContainer = ({ activeButton, ip }) => {
   });
 
   const Spinner = () => (
-    <div className="ml-64 flex h-screen flex-col items-center justify-center">
+    <div className="flex h-screen flex-col items-center justify-center">
       <div className="h-16 w-16 animate-spin rounded-full border-b-4 border-t-4 border-nemo-orange-950 shadow-md"></div>
     </div>
   );
