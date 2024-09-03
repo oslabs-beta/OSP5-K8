@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nemo-container
-          image: callummiles/nemo-app:latest
+          image: nemomonitoring/nemo-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
