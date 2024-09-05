@@ -55,19 +55,38 @@ Nemo provides Kubernetes cluster monitoring and data visualization in a simple a
 
 - [ ] Step 1A: Ensure that you are connected to a Kubernetes cluster and that you have a valid kubeconfig file. Kubectl should be installed as well.
 - [ ] Step 1B: To see available Kubernetes clusters, one can run `kubectl config get-contexts` from the command line. To change the active cluster, one can run `kubectl config use-context <name>`, where `<name>` represents the name of the cluster you want to monitor.
-- [ ] Step 2: Clone the repository
+- [ ] Step 2: Clone this repository in order to access the manifests locally
+
 ```
 git clone https://github.com/oslabs-beta/nemo.git
 ```
-- [ ] Step 3: Install all the necessary dependencies in the server and client directories
+
+<!-- - [ ] Step 3: Install all the necessary dependencies in the server and client directories
 ```
 npm install
 ```
 - [ ] Step 4: Run npm start in server and client directories:
 ```
 npm start
-```      
-  
+``` -->
+
+- [ ] Step 3: Navigate to the nemo directory on your local machine & apply the YAML files found in the server/manifests directory of this repo by running the following commands in the "nemo" directory from the terminal :
+
+```
+kubectl apply -f ./server/manifests/nemo-service-account.yaml
+kubectl apply -f ./server/manifests/nemo-role.yaml
+kubectl apply -f ./server/manifests/nemo-role-binding.yaml
+kubectl apply -f ./server/manifests/nemo-deployment.yaml
+
+kubectl apply -f ./server/manifests/nemo-service-account-secret.yaml
+kubectl apply -f ./server/manifests/nemo-service.yaml
+kubectl apply -f ./server/manifests/nemo-rbac.yaml
+```
+
+- [ ] Step 4: Once all YAML files are applied to the cluster, run
+      `kubectl get svc` to find the external IP address of `nemo-app`
+- [ ] Step 5: Insert the external IP address into the search box of the nemo dashboard to view the usage metrics of your cluster.
+
 ## How To Contribute
 
 1. Fork the Project
@@ -77,6 +96,7 @@ npm start
 5. Open a Pull Request
 
 Features yet to be added:
+
 - Test compatability with clusters hosted on AKS and EKS
 - Cost Analysis
 - Implement end to end testing
@@ -86,17 +106,14 @@ Features yet to be added:
 
 ## Meet the Team
 
-| Name              | GitHub                                                       | LinkedIn                                                     |
-|-------------------|--------------------------------------------------------------|--------------------------------------------------------------|
-| Ari Benkov        | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/abenkov2) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/ari-benkov-787b25139/) |
-| Paul Burger       | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/pvburger) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/pvburger/) |
-| Anthony Chaiditya | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/AnthonyChaiditya) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/anthony-chaiditya/) |
-| Trevor Hilz       | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Maelstrom116) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/trevor-hilz/) |
-| Callum Miles      | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/callummiles) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/callum-miles/) |
+| Name              | GitHub                                                                                                                                       | LinkedIn                                                                                                                                                         |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ari Benkov        | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/abenkov2)         | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/ari-benkov-787b25139/) |
+| Paul Burger       | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/pvburger)         | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/pvburger/)             |
+| Anthony Chaiditya | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/AnthonyChaiditya) | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/anthony-chaiditya/)    |
+| Trevor Hilz       | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/Maelstrom116)     | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/trevor-hilz/)          |
+| Callum Miles      | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/callummiles)      | [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/callum-miles/)         |
 
 ## License
 
 Nemo is an open source product licensed under the MIT license, and is accelerated by [OSLabs](https://www.opensourcelabs.io/).
-
-
-
