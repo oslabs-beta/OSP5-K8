@@ -55,7 +55,7 @@ Nemo provides Kubernetes cluster monitoring and data visualization in a simple a
 
 - [ ] Step 1A: Ensure that you are connected to a Kubernetes cluster and that you have a valid kubeconfig file. Kubectl should be installed as well.
 - [ ] Step 1B: To see available Kubernetes clusters, one can run `kubectl config get-contexts` from the command line. To change the active cluster, one can run `kubectl config use-context <name>`, where `<name>` represents the name of the cluster you want to monitor.
-- [ ] Step 2: Clone this repository in order to access the manifests locally
+<!-- - [ ] Step 2: Clone this repository in order to access the manifests locally
 
 ```
 git clone https://github.com/oslabs-beta/nemo.git
@@ -70,17 +70,18 @@ npm install
 npm start
 ``` -->
 
-- [ ] Step 3: Navigate to the nemo directory on your local machine & apply the YAML files found in the server/manifests directory of this repo by running the following commands in the "nemo" directory from the terminal :
+- [ ] Step 2: Download the each of the configuration files from the [server/manifests directory](https://github.com/oslabs-beta/nemo/tree/dev/server/manifests)
+
+- [ ] Step 3: Once downloaded, apply the YAML files by running the following commands from the terminal:
 
 ```
-kubectl apply -f ./server/manifests/nemo-service-account.yaml
-kubectl apply -f ./server/manifests/nemo-role.yaml
-kubectl apply -f ./server/manifests/nemo-role-binding.yaml
-kubectl apply -f ./server/manifests/nemo-deployment.yaml
-
-kubectl apply -f ./server/manifests/nemo-service-account-secret.yaml
-kubectl apply -f ./server/manifests/nemo-service.yaml
-kubectl apply -f ./server/manifests/nemo-rbac.yaml
+kubectl apply -f <DownloadDirectory>/nemo-service-account.yaml
+kubectl apply -f <DownloadDirectory>/nemo-role.yaml
+kubectl apply -f <DownloadDirectory>/nemo-role-binding.yaml
+kubectl apply -f <DownloadDirectory>/nemo-deployment.yaml
+kubectl apply -f <DownloadDirectory>/nemo-service-account-secret.yaml
+kubectl apply -f <DownloadDirectory>/nemo-service.yaml
+kubectl apply -f <DownloadDirectory>/nemo-rbac.yaml
 ```
 
 - [ ] Step 4: Once all YAML files are applied to the cluster, run
